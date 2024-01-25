@@ -1,10 +1,11 @@
 import React, { ChangeEventHandler } from 'react';
 
-interface DropdownListProps {
-  selectedValue?: string; // Make the selectedValue prop optional
-  onChange?: (event: ChangeEventHandler<HTMLSelectElement>) => void;
-}
+import { Operation } from '@/app/calculator/CalculatorComponent/converter';
 
+interface DropdownListProps {
+  selectedValue?: Operation; // Make the selectedValue prop optional
+  onChange?: ChangeEventHandler<HTMLSelectElement>; // Use ChangeEventHandler<HTMLSelectElement> for the onChange prop}
+}
 const DropdownList: React.FC<DropdownListProps> = ({
   selectedValue,
   onChange,

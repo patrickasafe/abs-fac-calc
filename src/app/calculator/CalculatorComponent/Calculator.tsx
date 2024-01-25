@@ -2,58 +2,49 @@ import { useState } from 'react';
 
 import ButtonLink from '@/components/links/ButtonLink';
 
-import Converter, {
-  Operation,
-} from '@/app/calculator/CalculatorComponent/converter';
+import Converter from '@/app/calculator/CalculatorComponent/converter';
+import useOperation from '@/app/calculator/CalculatorComponent/customHooks/useOperation';
+import useValues from '@/app/calculator/CalculatorComponent/customHooks/useValues';
 import DropdownList from '@/app/calculator/CalculatorComponent/DropdownList';
 import NumberInput from '@/app/calculator/CalculatorComponent/NumberInput';
-import useLabels from '@/app/calculator/CalculatorComponent/useLabels';
 
 const CalculatorComponent = () => {
-  const labels = useLabels();
+  const { labels, operation } = useOperation();
+  const values = useValues();
 
-  const [operation, setOperation] = useState<Operation>('ABSORBANCE');
   const [result, setResult] = useState<number>(0);
-
-  const [firstValue, setFirstValue] = useState(0);
-  const [secondValue, setSecondValue] = useState(0);
-  const [thirdValue, setThirdValue] = useState(0);
 
   const inputFields = [
     {
       label: labels.firstLabel,
-      value: firstValue,
-      stateUpdater: setFirstValue,
+      value: values.firstValue,
+      stateUpdater: values.setFirstValue,
     },
     {
       label: labels.secondLabel,
-      value: secondValue,
-      stateUpdater: setSecondValue,
+      value: values.secondValue,
+      stateUpdater: values.setSecondValue,
     },
     {
       label: labels.thirdLabel,
-      value: thirdValue,
-      stateUpdater: setThirdValue,
+      value: values.thirdValue,
+      stateUpdater: values.setThirdValue,
     },
   ];
 
   const handleCalculate = () => {
     const X = Converter({
-      Operation: operation,
-      A: firstValue,
-      B: secondValue,
-      C: thirdValue,
+      Operation: operation.operation,
+      A: values.firstValue,
+      B: values.secondValue,
+      C: values.thirdValue,
     });
     setResult(X);
   };
 
   return (
     <>
-      <DropdownList
-        onChange={(value) => {
-          setOperation(value);
-        }}
-      />
+      <DropdownList onChange={operation.handleOperation} />
       {inputFields.map((field, index) => (
         <NumberInput
           key={index}

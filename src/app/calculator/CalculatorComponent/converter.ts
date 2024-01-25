@@ -24,7 +24,7 @@ export function Calculator(
 }
 
 interface ConverterProps {
-  Operation: 'ABSORBANCE' | 'FACTOR'; // Assuming Operation can only be one of these values
+  Operation: Operation; // Assuming Operation can only be one of these values
   A: NonZeroNumber;
   B: NonZeroNumber;
   C: NonZeroNumber;
