@@ -1,6 +1,4 @@
-import Converter, {
-  Calculator,
-} from '@/app/calculator/CalculatorComponent/converter';
+import Converter, { Calculator } from '@/app/calculator/Calculator/converter';
 
 describe('Calculator', () => {
   test('Calculates A * B / C correctly', () => {

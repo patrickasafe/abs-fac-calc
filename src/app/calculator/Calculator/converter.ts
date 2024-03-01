@@ -1,5 +1,5 @@
 export type Operation = 'ABSORBANCE' | 'FACTOR';
-type NonZeroNumber = number & { __nonZeroNumber: true };
+export type NonZeroNumber = number;
 
 /**
  * Calculates the result of the expression A * B / C.
@@ -38,7 +38,7 @@ function Converter({ Operation, A, B, C }: ConverterProps): number {
       result = Calculator(A, B, C);
       break;
     case 'FACTOR':
-      result = Calculator(C, B, A);
+      result = Calculator(A, C, B);
       break;
     default:
       throw new Error('Invalid Operation');
