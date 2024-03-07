@@ -47,7 +47,7 @@ const Calculator = () => {
           value={field.value}
           className='appearance-none'
           onChange={(value) => {
-            const numberValue = stringToNumber(value);
+            const numberValue = stringToNumber(value.target.value);
             if (numberValue !== null && validateNumber(numberValue)) {
               updateCalculatorValue(field.index, numberValue);
             } else {

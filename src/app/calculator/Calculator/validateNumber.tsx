@@ -1,27 +1,32 @@
 function validateNumber(
-  input: string,
-  options?: { min?: number; max?: number; allowNull?: boolean }
+  input: string | number | null | undefined,
+  options?: {
+    min?: number;
+    max?: number;
+    allowNull?: boolean;
+    allowUndefined?: boolean;
+    integerOnly?: boolean;
+  }
 ): boolean {
-  // Check if input is allowed to be null
-  if (options?.allowNull && input === null) {
-    return true;
-  }
+  // Explicitly check for null and undefined
+  if (input === null && options?.allowNull) return true;
+  if (input === undefined && options?.allowUndefined) return true;
 
-  // Check if input is a number
-  const number = parseFloat(input);
-  if (isNaN(number)) {
+  // Reject non-numeric input types immediately
+  if (typeof input !== 'string' && typeof input !== 'number') {
     return false;
   }
 
-  // Check for minimum value
-  if (options?.min !== undefined && number < options.min) {
-    return false;
-  }
+  // Convert to number and check for NaN
+  const number = Number(input);
+  if (isNaN(number)) return false;
 
-  // Check for maximum value
-  if (options?.max !== undefined && number > options.max) {
-    return false;
-  }
+  // Additional check for integer-only validation
+  if (options?.integerOnly && !Number.isInteger(number)) return false;
+
+  // Check for minimum and maximum values
+  if (options?.min !== undefined && number < options.min) return false;
+  if (options?.max !== undefined && number > options.max) return false;
 
   return true;
 }
