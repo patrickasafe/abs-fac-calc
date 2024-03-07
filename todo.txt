@@ -1,5 +1,3 @@
-- adicionar um dropdown
 - formatar inputs, retirando as setas
-- adicionar tratadores para os inputs
 - adicionar erros para o calculo
 - landing page mais bonitinha
