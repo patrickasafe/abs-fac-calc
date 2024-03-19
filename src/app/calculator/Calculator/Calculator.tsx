@@ -46,9 +46,12 @@ const Calculator = () => {
           label={field.label}
           value={field.value}
           className='appearance-none'
-          onChange={(value) => {
-            const numberValue = stringToNumber(value.target.value);
-            if (numberValue !== null && validateNumber(numberValue)) {
+          onChange={(e) => {
+            const numberValue = stringToNumber(e);
+            if (
+              numberValue !== null &&
+              validateNumber(numberValue, { allowUndefined: true })
+            ) {
               updateCalculatorValue(field.index, numberValue);
             } else {
               // Optionally handle invalid input

@@ -1,20 +1,15 @@
 export type Operation = 'ABSORBANCE' | 'FACTOR';
-export type NonZeroNumber = number;
 
 /**
  * Calculates the result of the expression A * B / C.
  *
- * @param {NonZeroNumber} A - The value of A.
- * @param {NonZeroNumber} B - The value of B.
- * @param {NonZeroNumber} C - The value of C (must be non-zero).
+ * @param {number} A - The value of A.
+ * @param {number} B - The value of B.
+ * @param {number} C - The value of C (must be non-).
  * @returns {number} The result of the expression A * B / C.
  * @throws Will throw an error if C is zero.
  */
-export function Calculator(
-  A: NonZeroNumber,
-  B: NonZeroNumber,
-  C: NonZeroNumber
-): number {
+export function Calculator(A: number, B: number, C: number): number {
   if (C === 0) {
     throw new Error('C must be non-zero values.');
   }
@@ -25,9 +20,9 @@ export function Calculator(
 
 interface ConverterProps {
   Operation: Operation; // Assuming Operation can only be one of these values
-  A: NonZeroNumber;
-  B: NonZeroNumber;
-  C: NonZeroNumber;
+  A: number;
+  B: number;
+  C: number;
 }
 
 function Converter({ Operation, A, B, C }: ConverterProps): number {
