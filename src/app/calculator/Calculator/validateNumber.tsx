@@ -19,7 +19,10 @@ function validateNumber(
 
   // Convert to number and check for NaN
   const number = Number(input);
-  if (isNaN(number)) return false;
+  if (isNaN(number)) {
+    alert('Por favor, insira um número válido');
+    return false;
+  }
 
   // Additional check for integer-only validation
   if (options?.integerOnly && !Number.isInteger(number)) return false;

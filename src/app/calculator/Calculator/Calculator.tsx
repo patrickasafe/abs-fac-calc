@@ -1,33 +1,73 @@
+import { useState } from 'react';
+
 import ButtonLink from '@/components/links/ButtonLink';
 
-import Converter from '@/app/calculator/Calculator/converter';
 import useOperation from '@/app/calculator/Calculator/customHooks/useOperation';
 import useCalculatorState from '@/app/calculator/Calculator/customHooks/useValues';
 import NumberInput from '@/app/calculator/Calculator/NumberInput';
-import stringToNumber from '@/app/calculator/Calculator/stringToNumber';
 import validateNumber from '@/app/calculator/Calculator/validateNumber';
 
 import DropdownList from './DropdownList/DropdownList';
 
 const Calculator = () => {
   const { labels, operationControl } = useOperation();
-  const { calculatorState, updateCalculatorValue, setResult, result } =
-    useCalculatorState();
+  const { updateCalculatorStateWithArray, calculatorState } =
+    useCalculatorState(operationControl.operation);
 
-  const inputFields = [
-    { label: labels.firstLabel, value: calculatorState[0], index: 0 },
-    { label: labels.secondLabel, value: calculatorState[1], index: 1 },
-    { label: labels.thirdLabel, value: calculatorState[2], index: 2 },
+  const [inputsValue, setInputsValue] = useState({
+    firstInput: '',
+    secondInput: '',
+    thirdInput: '',
+  });
+
+  const inputsProps = [
+    {
+      label: labels.firstLabel,
+      value: inputsValue.firstInput,
+      id: 'firstInput',
+    },
+    {
+      label: labels.secondLabel,
+      value: inputsValue.secondInput,
+      id: 'secondInput',
+    },
+    {
+      label: labels.thirdLabel,
+      value: inputsValue.thirdInput,
+      id: 'thirdInput',
+    },
   ];
 
   const handleCalculate = () => {
-    const X = Converter({
-      Operation: operationControl.operation,
-      A: calculatorState[0],
-      B: calculatorState[1],
-      C: calculatorState[2],
-    });
-    setResult(X);
+    // Try to validate and parse all inputs upfront.
+    const parsedInputs = [];
+    for (let i = 0; i < inputsProps.length; i++) {
+      const input = inputsProps[i];
+      if (!validateNumber(input.value)) {
+        alert(`Verificar valor de ${input.label}`);
+        return; // Exit the function early on validation failure.
+      }
+      // Parse and store the validated and parsed number.
+      parsedInputs.push(parseFloat(input.value));
+    }
+
+    // Assuming the first three inputs are what you need to update in the calculator state
+    // and your state management setup can handle an array of three numbers:
+    if (parsedInputs.length >= 3) {
+      // Extract the first three items from parsedInputs
+      const numbersToUpdate = parsedInputs.slice(0, 3);
+      // Update calculator state with the array of numbers
+      updateCalculatorStateWithArray(numbersToUpdate);
+    } else {
+      throw new Error('Not enough inputs to update calculator state.');
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInputsValue((prevstate) => ({
+      ...prevstate,
+      [e.target.id]: e.target.value,
+    }));
   };
 
   return (
@@ -40,23 +80,14 @@ const Calculator = () => {
           { value: 'FACTOR', label: 'Fator' },
         ]}
       />
-      {inputFields.map((field, index) => (
+      {inputsProps.map((props) => (
         <NumberInput
-          key={index}
-          label={field.label}
-          value={field.value}
+          key={props.id}
+          id={props.id}
+          label={props.label}
+          value={props.value}
           className='appearance-none'
-          onChange={(e) => {
-            const numberValue = stringToNumber(e);
-            if (
-              numberValue !== null &&
-              validateNumber(numberValue, { allowUndefined: true })
-            ) {
-              updateCalculatorValue(field.index, numberValue);
-            } else {
-              // Optionally handle invalid input
-            }
-          }}
+          onChange={handleInputChange}
         />
       ))}
       <ButtonLink
@@ -70,7 +101,7 @@ const Calculator = () => {
       >
         Calculate
       </ButtonLink>
-      <p>Result is: {result}</p>
+      <p>Result is: {calculatorState[3]}</p>
     </>
   );
 };

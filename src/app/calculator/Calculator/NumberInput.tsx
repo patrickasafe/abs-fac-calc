@@ -1,9 +1,10 @@
 import React, { forwardRef } from 'react';
 
 interface CustomInputProps {
+  id: string;
   label: string;
-  value?: number;
-  onChange?: (newValue: number) => void;
+  value?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
 
@@ -11,10 +12,7 @@ const NumberInput = forwardRef<HTMLInputElement, CustomInputProps>(
   // eslint-disable-next-line unused-imports/no-unused-vars
   ({ label, value, onChange, className, ...props }, ref) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = parseFloat(event.target.value);
-      if (!isNaN(newValue) && onChange) {
-        onChange(newValue);
-      }
+      onChange(event);
     };
 
     return (
