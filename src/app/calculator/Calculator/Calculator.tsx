@@ -7,7 +7,7 @@ import useCalculatorState from '@/app/calculator/Calculator/customHooks/useValue
 import NumberInput from '@/app/calculator/Calculator/NumberInput';
 import validateNumber from '@/app/calculator/Calculator/validateNumber';
 
-import RadioButtonsList from './DropdownList/CustomRadioButtonsList';
+import RadioButtonsList from './CustomRadioButtons/CustomRadioButtonsList';
 
 const Calculator = () => {
   const { labels, operationControl } = useOperation();
@@ -73,9 +73,7 @@ const Calculator = () => {
   return (
     <>
       <RadioButtonsList
-        onChange={(e) => {
-          operationControl.handleOperation(e.target.id);
-        }}
+        onChange={operationControl.handleOperation}
         options={[
           // { value: undefined, label: "Selecione uma opção"},
           { value: 'ABSORBANCE', label: 'Absorbância' },

@@ -9,8 +9,6 @@ const CustomLabel = forwardRef<HTMLLabelElement, CustomLabelProps>(
     return (
       <label
         ref={ref}
-        // "htmlFor" should be dynamic or removed if not needed as a static value
-        // since it associates the label with an input element by id
         className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
         {...props} // Spread props last so they can override the defaults if needed
       >
