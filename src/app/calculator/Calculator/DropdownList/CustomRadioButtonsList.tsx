@@ -3,15 +3,15 @@ import React, { ChangeEventHandler } from 'react';
 // Assuming Operation is an enum or a type with specific operation values
 import { Operation } from '@/app/calculator/Calculator/converter';
 import CustomLabel from '@/app/calculator/Calculator/DropdownList/CustomLabel';
-import CustomSelect from '@/app/calculator/Calculator/DropdownList/CustomSelect';
+import CustomRadioButtons from '@/app/calculator/Calculator/DropdownList/CustomSelect';
 
-interface DropdownListProps {
+interface CustomRadioButtonsProps {
   selectedValue?: Operation;
   onChange?: ChangeEventHandler<HTMLSelectElement>;
   options: { value: Operation; label: string }[]; // Add an options prop for dynamic dropdown options
 }
 
-const DropdownList: React.FC<DropdownListProps> = ({
+const RadioButtonsList: React.FC<CustomRadioButtonsProps> = ({
   selectedValue,
   onChange,
   options,
@@ -19,14 +19,14 @@ const DropdownList: React.FC<DropdownListProps> = ({
   return (
     <>
       <CustomLabel>Selecione uma operação</CustomLabel>
-      <CustomSelect
+      <CustomRadioButtons
         selectedValue={selectedValue}
         options={options}
         value={selectedValue}
-        onChange={(e) => onChange?.(e)}
+        onChange={onChange}
       />
     </>
   );
 };
 
-export default DropdownList;
+export default RadioButtonsList;

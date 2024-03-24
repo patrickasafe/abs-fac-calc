@@ -1,4 +1,4 @@
-import { forwardRef, SelectHTMLAttributes } from 'react';
+import React, { ChangeEvent, forwardRef, InputHTMLAttributes } from 'react';
 
 import { Operation } from '@/app/calculator/Calculator/converter';
 
@@ -7,36 +7,47 @@ interface Option {
   label: string;
 }
 
-interface CustomSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+// Introduce a new interface for your component's specific props
+interface CustomRadioButtonsSpecificProps {
   options: Option[];
-  selectedValue?: Operation | undefined;
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  selectedValue?: Operation;
+  onValueChange: (value: Operation) => void; // Renamed to avoid conflict
 }
 
-const CustomSelect = forwardRef<HTMLSelectElement, CustomSelectProps>(
-  ({ options, selectedValue, onChange, ...props }, ref) => {
-    const handleSelect = (e) => {
-      onChange(e.target.value);
-    };
+// Combine the two sets of props into one type
+type CustomRadioButtonsProps = CustomRadioButtonsSpecificProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
-    return (
-      <select
-        ref={ref}
-        id='operationSelector'
-        value={selectedValue}
-        onChange={handleSelect}
-        className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
-        aria-label='Selecione uma operação'
-        {...props} // Allows for additional props (like `name`, `disabled`, etc.) to be passed to the select element
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
+const CustomRadioButtons = forwardRef<
+  HTMLInputElement,
+  CustomRadioButtonsProps
+>(({ options, selectedValue, onValueChange, ...props }, ref) => {
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onValueChange(e.target.value);
+  };
+
+  return (
+    <div className='w-72'>
+      {options.map((option) => (
+        <div key={option.value} className='mb-4 flex items-center'>
+          <input
+            ref={ref}
+            id={option.value}
+            type='radio'
+            name='operation'
+            value={option.value}
+            checked={selectedValue === option.value}
+            onChange={handleRadioChange}
+            className='h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600'
+            {...props} // Spreads additional props to each input element
+          />
+          <label htmlFor={option.value} className='ml-2'>
             {option.label}
-          </option>
-        ))}
-      </select>
-    );
-  }
-);
+          </label>
+        </div>
+      ))}
+    </div>
+  );
+});
 
-export default CustomSelect;
+export default CustomRadioButtons;
