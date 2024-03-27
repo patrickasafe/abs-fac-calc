@@ -36,10 +36,10 @@ const CustomRadioButtons = forwardRef<
             name='operation'
             value={option.value}
             onChange={handleChange} // Update the selected value on change
-            className='form-radio text-blue-600'
+            className='form-radio cursor-pointer text-blue-600'
             {...props} // Spreads additional props to each input element
           />
-          <label htmlFor={option.value} className='ml-2'>
+          <label htmlFor={option.value} className='ml-2 cursor-pointer'>
             {option.label}
           </label>
         </div>

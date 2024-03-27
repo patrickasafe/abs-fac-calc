@@ -99,7 +99,7 @@ const Calculator = () => {
           handleCalculate();
         }}
       >
-        Calculate
+        Calcular
       </ButtonLink>
       <p>O resultado é: {calculatorState[3]}</p>
     </>
