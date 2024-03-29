@@ -19,11 +19,11 @@ export default function HomePage() {
         <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
           <h1 className='mt-4'>Calculadora de Fator e Absorbância</h1>
           <p className='mt-2 text-sm text-gray-800'>
-            "Uma metodologia eficaz para calcular fatores e medir absorbâncias
-            com precisão. É importante destacar a necessidade de utilizar o
-            ponto (.) como separador decimal, seguindo o padrão americano, em
-            detrimento da vírgula, para garantir clareza e precisão nos dados
-            matemáticos apresentados."
+            "Para garantir a precisão no cálculo de fatores e na medição de
+            absorbâncias, é essencial adotar o ponto (.) como separador decimal,
+            conforme o padrão americano. Essa prática assegura a correta
+            inserção e interpretação dos dados nos softwares dos equipamentos,
+            evitando erros e inconsistências."
           </p>
 
           <Calculator />

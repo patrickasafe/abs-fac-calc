@@ -1,3 +1,6 @@
-- formatar inputs, retirando as setas
-- adicionar erros para o calculo
+- formatar inputs, retirando as setas ok
+- adicionar erros para o calculo ok
 - landing page mais bonitinha
+- tela de boas vindas
+- dropdown de reagentes?
+- Tratamento dos INPUTS: trocar vírgulas por pontos, para aí então fazer o parsefloat ok

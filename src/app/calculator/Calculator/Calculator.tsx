@@ -43,6 +43,10 @@ const Calculator = () => {
     const parsedInputs = [];
     for (let i = 0; i < inputsProps.length; i++) {
       const input = inputsProps[i];
+      if (input.value.includes(',')) {
+        input.value = input.value.replaceAll('.', ',');
+        alert(input.value);
+      }
       if (!validateNumber(input.value)) {
         alert(`Verificar valor de ${input.label}`);
         return; // Exit the function early on validation failure.
@@ -75,7 +79,6 @@ const Calculator = () => {
       <RadioButtonsList
         onChange={operationControl.handleOperation}
         options={[
-          // { value: undefined, label: "Selecione uma opção"},
           { value: 'ABSORBANCE', label: 'Absorbância' },
           { value: 'FACTOR', label: 'Fator' },
         ]}
