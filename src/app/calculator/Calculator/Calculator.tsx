@@ -66,7 +66,7 @@ const Calculator = () => {
       throw new Error('Not enough inputs to update calculator state.');
     }
   };
-
+  // @ts-expect-error event type error
   const handleInputChange = (e) => {
     setInputsValue((prevstate) => ({
       ...prevstate,
@@ -77,6 +77,7 @@ const Calculator = () => {
   return (
     <>
       <RadioButtonsList
+        // @ts-expect-error onchange type error
         onChange={operationControl.handleOperation}
         options={[
           { value: 'ABSORBANCE', label: 'Absorbância' },
