@@ -44,8 +44,7 @@ const Calculator = () => {
     for (let i = 0; i < inputsProps.length; i++) {
       const input = inputsProps[i];
       if (input.value.includes(',')) {
-        input.value = input.value.replaceAll('.', ',');
-        alert(input.value);
+        input.value = input.value.replaceAll(',', '.');
       }
       if (!validateNumber(input.value)) {
         alert(`Verificar valor de ${input.label}`);
@@ -55,8 +54,6 @@ const Calculator = () => {
       parsedInputs.push(parseFloat(input.value));
     }
 
-    // Assuming the first three inputs are what you need to update in the calculator state
-    // and your state management setup can handle an array of three numbers:
     if (parsedInputs.length >= 3) {
       // Extract the first three items from parsedInputs
       const numbersToUpdate = parsedInputs.slice(0, 3);

@@ -1,27 +1,44 @@
-import stringToNumber from '@/app/components/Calculator/stringToNumber';
+import stringToNumber from './stringToNumber'; // Adjust the import path as necessary
 
 describe('stringToNumber', () => {
-  it('converts a valid string to a number', () => {
+  test('converts a valid integer string to a number', () => {
     expect(stringToNumber('123')).toBe(123);
-    expect(stringToNumber('45.67')).toBe(45.67);
   });
 
-  it('handles strings with leading/trailing whitespace', () => {
-    expect(stringToNumber('  123  ')).toBe(123);
-    expect(stringToNumber('  45.67  ')).toBe(45.67);
+  test('converts a valid floating-point string to a number', () => {
+    expect(stringToNumber('123.45')).toBe(123.45);
   });
 
-  it('returns null for non-numeric strings', () => {
+  test('returns null for a non-numeric string', () => {
     expect(stringToNumber('abc')).toBeNull();
-    expect(stringToNumber('123abc')).toBeNull();
   });
 
-  it('returns null for empty strings', () => {
+  test('returns null for an empty string', () => {
     expect(stringToNumber('')).toBeNull();
   });
 
-  it('handles strings representing zero', () => {
-    expect(stringToNumber('0')).toBe(0);
-    expect(stringToNumber('0.0')).toBe(0);
+  test('ignores leading and trailing spaces', () => {
+    expect(stringToNumber('  123.45  ')).toBe(123.45);
   });
+
+  test('returns null for a string with numbers and letters mixed', () => {
+    expect(stringToNumber('123abc')).toBeNull();
+  });
+
+  test('handles strings with only a decimal point', () => {
+    expect(stringToNumber('.')).toBeNull();
+  });
+
+  test('converts a string with a leading decimal point', () => {
+    expect(stringToNumber('.123')).toBe(0.123);
+  });
+
+  test('converts a string with a trailing decimal point', () => {
+    expect(stringToNumber('123.')).toBe(123);
+  });
+
+  // Additional edge cases could include:
+  // - Strings representing negative numbers
+  // - Strings with scientific notation
+  // - Strings with non-standard numeric formats (e.g., "1,234.56" or "1 234,56")
 });

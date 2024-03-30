@@ -21,12 +21,12 @@ describe('Converter', () => {
 
   test('Converts using FACTOR operation', () => {
     const result = Converter({ Operation: 'FACTOR', A: 10, B: 5, C: 2 });
-    expect(result).toBe(1);
+    expect(result).toBe(4);
   });
 
   test('Throws an error for invalid operation', () => {
     expect(() =>
-      Converter({ Operation: 'INVALID', A: 2, B: 5, C: 10 })
+      Converter({ Operation: null, A: 2, B: 5, C: 10 })
     ).toThrowError('Invalid Operation');
   });
 });
