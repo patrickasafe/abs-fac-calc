@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Converter, { Operation } from '@/app/calculator/Calculator/converter';
+import Converter, { Operation } from '@/app/components/Calculator/converter';
 
 const useCalculatorState = (operation: Operation) => {
   const [calculatorState, setCalculatorState] = useState([0, 0, 0, 0]);

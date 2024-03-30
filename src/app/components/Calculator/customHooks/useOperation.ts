@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { Operation } from '@/app/calculator/Calculator/converter';
-import useLabels from '@/app/calculator/Calculator/customHooks/useLabels';
+import { Operation } from '@/app/components/Calculator/converter';
+import useLabels from '@/app/components/Calculator/customHooks/useLabels';
 
 const useOperation = () => {
   const [operation, setOperation] = useState<Operation>('ABSORBANCE');

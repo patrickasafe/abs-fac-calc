@@ -1,4 +1,4 @@
-import stringToNumber from '@/app/calculator/Calculator/stringToNumber';
+import stringToNumber from '@/app/components/Calculator/stringToNumber';
 
 describe('stringToNumber', () => {
   it('converts a valid string to a number', () => {

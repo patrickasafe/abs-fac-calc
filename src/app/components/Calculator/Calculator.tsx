@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import ButtonLink from '@/components/links/ButtonLink';
 
-import useOperation from '@/app/calculator/Calculator/customHooks/useOperation';
-import useCalculatorState from '@/app/calculator/Calculator/customHooks/useValues';
-import NumberInput from '@/app/calculator/Calculator/NumberInput';
-import validateNumber from '@/app/calculator/Calculator/validateNumber';
+import useOperation from '@/app/components/Calculator/customHooks/useOperation';
+import useCalculatorState from '@/app/components/Calculator/customHooks/useValues';
+import NumberInput from '@/app/components/Calculator/NumberInput';
+import validateNumber from '@/app/components/Calculator/validateNumber';
 
 import RadioButtonsList from './CustomRadioButtons/CustomRadioButtonsList';
 
@@ -95,7 +95,7 @@ const Calculator = () => {
         />
       ))}
       <ButtonLink
-        className='mt-6'
+        className='m-4'
         href='/calculator'
         variant='light'
         onClick={(e) => {

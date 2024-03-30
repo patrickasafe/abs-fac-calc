@@ -1,4 +1,4 @@
-import Converter, { Calculator } from '@/app/calculator/Calculator/converter';
+import Converter, { Calculator } from '@/app/components/Calculator/converter';
 
 describe('Calculator', () => {
   test('Calculates A * B / C correctly', () => {

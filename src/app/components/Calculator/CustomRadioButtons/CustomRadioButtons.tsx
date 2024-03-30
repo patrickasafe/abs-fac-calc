@@ -1,7 +1,7 @@
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 
 // Assuming this import path and Operation type are correct
-import { Operation } from '@/app/calculator/Calculator/converter';
+import { Operation } from '@/app/components/Calculator/converter';
 
 interface Option {
   value: Operation;
