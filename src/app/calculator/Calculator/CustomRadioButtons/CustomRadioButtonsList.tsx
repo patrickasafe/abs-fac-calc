@@ -22,6 +22,7 @@ const RadioButtonsList: React.FC<CustomRadioButtonsProps> = ({
       <CustomRadioButtons
         options={options}
         value={selectedValue}
+        // @ts-expect-error onchange type error
         onChange={onChange}
       />
     </>
