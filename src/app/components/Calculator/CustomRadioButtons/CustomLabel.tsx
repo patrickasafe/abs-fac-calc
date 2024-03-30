@@ -9,7 +9,7 @@ const CustomLabel = forwardRef<HTMLLabelElement, CustomLabelProps>(
     return (
       <label
         ref={ref}
-        className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
+        className='mb-2 block text-sm font-medium text-gray-800'
         {...props} // Spread props last so they can override the defaults if needed
       >
         {props.children} {/* Render children inside label */}
