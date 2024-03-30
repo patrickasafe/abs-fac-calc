@@ -102,7 +102,7 @@ const Calculator = () => {
       >
         Calcular
       </ButtonLink>
-      <p>O resultado é: {calculatorState[3]}</p>
+      <p>O resultado é: {calculatorState[3].toFixed(4)}</p>
     </>
   );
 };
