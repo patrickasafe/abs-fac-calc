@@ -3,6 +3,8 @@
 import Head from 'next/head';
 import * as React from 'react';
 
+import AboutMeCard from '@/components/cards/AboutMeCard';
+
 import Calculator from '@/app/components/Calculator/Calculator';
 
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
@@ -28,6 +30,7 @@ export default function HomePage() {
             </p>
           </div>
           <Calculator />
+          <AboutMeCard />
         </div>
       </section>
     </main>
