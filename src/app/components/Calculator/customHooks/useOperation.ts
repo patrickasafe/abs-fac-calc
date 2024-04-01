@@ -10,8 +10,8 @@ const useOperation = () => {
   useEffect(() => {
     const updateFirstLabel = (operation: Operation) => {
       const labelMap: { [key: string]: string } = {
-        ABSORBANCE: 'Absorbância utilizada',
-        FACTOR: 'Fator utilizado',
+        ABSORBANCE: 'Absorbância Utilizada',
+        FACTOR: 'Fator Utilizado',
       };
 
       // Adjusted to match the expected parameters based on the suggested `useLabels` adjustments
