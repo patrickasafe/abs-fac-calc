@@ -15,7 +15,7 @@ const CustomLabel = forwardRef<HTMLLabelElement, CustomLabelProps>(
         {props.children} {/* Render children inside label */}
       </label>
     );
-  }
+  },
 );
 
 export default CustomLabel;

@@ -53,7 +53,7 @@ describe('validateNumber', () => {
 
     validateNumber('abc');
     expect(global.alert).toHaveBeenCalledWith(
-      'Por favor, insira um número válido'
+      'Por favor, insira um número válido',
     );
   });
 });

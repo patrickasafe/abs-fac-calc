@@ -17,8 +17,8 @@ const NumberInput = forwardRef<HTMLInputElement, CustomInputProps>(
 
     return (
       <>
-        <div className='w-125 my-2'>
-          <div className='relative h-10 w-full min-w-[72px]'>
+        <div className='max-w-screen-sm my-4'>
+          <div className='relative h-10 w-full min-w-[8rem]'>
             <input
               ref={ref}
               type='text'
@@ -26,10 +26,6 @@ const NumberInput = forwardRef<HTMLInputElement, CustomInputProps>(
               onChange={handleChange}
               placeholder=''
               className='
-              rounded-3xl 
-              bg-neutral-100 
-              shadow-md 
-              placeholder:text-center 
               content 
               placeholder-shown:border-secondary-200 
               placeholder-shown:border-t-secondary-200 
@@ -37,63 +33,65 @@ const NumberInput = forwardRef<HTMLInputElement, CustomInputProps>(
               peer 
               h-full 
               w-full 
-              border 
+              rounded-3xl 
+              bg-neutral-100 
               bg-transparent 
               px-3 
               py-2.5 
+              shadow-md 
               outline 
               outline-0 
               transition-all 
-              placeholder-shown:border 
-              focus:border-2 
-              focus:border-t-transparent 
+              placeholder:text-center 
+              focus:border-2
               focus:outline-0 
-              disabled:border-0'
+              disabled:border-0
+              '
               // className='border-primary-200 text-primary-700 placeholder-shown:border-primary-200 '
               {...props}
             />
             <label
               className='
             peer-placeholder-shown:text-secondary-500 
-            peer-disabled:peer-placeholder-shown:text-secondary-500 
+            text-secondary-500 
+            before:border-box 
+            peer-placeholder-shown: 
             pointer-events-none 
             absolute 
-            -top-1.5 
+            -top-5
             left-0 
             flex 
             h-full 
-            w-full 
+            w-full
             select-none 
-            !overflow-visible 
+            !overflow-visible
             truncate
-            text-[11px] 
-            font-normal
-            leading-tight
-            text-secondary-500
+            text-[11px]
+            font-normal 
+            leading-tight 
             transition-all 
             before:pointer-events-none 
             before:mr-1 
-            before:border-box 
             before:h-1.5 
             before:w-2.5 
-            after:pointer-events-none 
-            after:ml-1
+            after:pointer-events-none
+            after:ml-1 
             after:mt-[6.5px] 
             after:box-border 
             after:block 
-            after:h-1.5 
-            after:w-2.5
+            after:h-1.5
+            after:w-2.5 
             after:flex-grow 
             after:transition-all 
-            peer-placeholder-shown:text-sm 
-            peer-placeholder-shown:
-            peer-placeholder-shown:leading-[3.75] 
+            peer-placeholder-shown:text-sm
+            peer-placeholder-shown:leading-[5.75] 
             peer-focus:text-[11px] 
             peer-focus:leading-tight 
             peer-focus:text-gray-900 
             peer-disabled:text-transparent 
             peer-disabled:before:border-transparent 
             peer-disabled:after:border-transparent
+            peer-disabled:peer-placeholder-shown:text-secondary-500 
             '
             >
               {label}

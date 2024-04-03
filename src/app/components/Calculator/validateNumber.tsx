@@ -6,7 +6,7 @@ function validateNumber(
     allowNull?: boolean;
     allowUndefined?: boolean;
     integerOnly?: boolean;
-  }
+  },
 ): boolean {
   // Explicitly check for null and undefined
   if (input === null && options?.allowNull) return true;

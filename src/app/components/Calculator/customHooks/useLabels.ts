@@ -16,7 +16,7 @@ const useLabels = () => {
   const updateLabel = (
     value: string,
     options: LabelOptions,
-    setLabel: Dispatch<SetStateAction<string>>
+    setLabel: Dispatch<SetStateAction<string>>,
   ) => {
     const label = options[value];
     if (label) {
@@ -28,7 +28,7 @@ const useLabels = () => {
   const handleLabel = (
     value: string,
     labelKey: keyof typeof labelsSetters,
-    options: LabelOptions
+    options: LabelOptions,
   ) => {
     const setter = labelsSetters[labelKey];
     if (setter) {

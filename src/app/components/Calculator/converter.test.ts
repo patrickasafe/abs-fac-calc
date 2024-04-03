@@ -8,7 +8,7 @@ describe('Calculator', () => {
 
   test('Throws an error if C is zero', () => {
     expect(() => Calculator(10, 5, 0)).toThrowError(
-      'C must be non-zero values.'
+      'C must be non-zero values.',
     );
   });
 });
@@ -26,7 +26,7 @@ describe('Converter', () => {
 
   test('Throws an error for invalid operation', () => {
     expect(() =>
-      Converter({ Operation: null, A: 2, B: 5, C: 10 })
+      Converter({ Operation: null, A: 2, B: 5, C: 10 }),
     ).toThrowError('Invalid Operation');
   });
 });
